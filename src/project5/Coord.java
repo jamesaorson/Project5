@@ -5,11 +5,11 @@ package project5;
   *
   * @author James Osborne
   * @version 1.0 
-  * File: <filename>
-  * Created:  <current date>
+  * File: Coord.java
+  * Created:  25 Oct 2016
   * ©Copyright James Osborne. All rights reserved.
   * Summary of Modifications:
-  *     XX month XXXX – JAO – 
+  *     25 Oct 2016 – JAO – Created constructors, x, y, accessors, and mutators.
   * 
   * Description: 
   */

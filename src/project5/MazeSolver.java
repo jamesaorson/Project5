@@ -11,68 +11,75 @@ import java.util.Scanner;
   *
   * @author James Osborne
   * @version 1.0 
-  * File: <filename>
-  * Created:  <current date>
+  * File: MazeSolver.java
+  * Created:  25 Oct 2016
   * ©Copyright James Osborne. All rights reserved.
   * Summary of Modifications:
-  *     XX month XXXX – JAO – 
+  *     25 Oct 2016 – JAO – Created default constructor, moves, locations, and
+  *     solve method. Solve method reads input from the file, initializes the
+  *     locations variable, and prints out locations demonstrating parsing
+  *     has been done correctly.
   * 
   * Description: 
   */
 public class MazeSolver {
     private Queue<Integer> moves;
-    private static Location[] locations;
+    private Location[][] locations;
     
     public MazeSolver() {
         moves = new LinkedList<Integer>();
-        locations = new Location[0];
+        locations = new Location[0][0];
     }
     
-    public static void main(String[] args) throws FileNotFoundException {
-        Scanner fileInput = new Scanner(System.in);
-        File file = new File(fileInput.nextLine());
-        
-        fileInput = new Scanner(file);
+    public void solve(String filename) throws FileNotFoundException {
+        File file = new File(filename);
+        Scanner fileInput = new Scanner(file);
         
         int rows;
         int columns;
         
         rows = fileInput.nextInt();
         columns = fileInput.nextInt();
+        fileInput.nextLine();
         
-        locations = new Location[rows * columns];
+        locations = new Location[rows][columns];
         
         String wallType;
-        Coord spot;
         
-        fileInput.useDelimiter("");
-        
-        for (int i = 0; i < rows * columns; ++i) {
-            wallType = fileInput.next();
+        for (int i = 0; i < rows; ++i) {
             
-            switch (wallType) {
-                case "X":
-                    locations[i].setType(MazeSquare.wall);
-                    break;
-                case ".":
-                    locations[i].setType(MazeSquare.open);
-                    break;
-                case "S":
-                    locations[i].setType(MazeSquare.start);
-                    break;
-                case "T":
-                    locations[i].setType(MazeSquare.finish);
-                    break;
-                default:
-                    locations[i].setType(MazeSquare.undefined);
-                    break;
+            wallType = fileInput.nextLine();
+            
+            for (int j = 0; j < columns; ++j) {
+                
+                switch (wallType.charAt(j)) {
+                    case 'X':
+                        locations[i][j] = new Location(MazeSquare.wall, i, j);
+                        break;
+                    case '.':
+                        locations[i][j] = new Location(MazeSquare.open, i, j);
+                        break;
+                    case 'S':
+                        locations[i][j] = new Location(MazeSquare.start, i, j);
+                        break;
+                    case 'T':
+                        locations[i][j] = new Location(MazeSquare.finish, i, j);
+                        break;
+                    /*default:
+                        locations[i][j] = new Location(MazeSquare.undefined, i, j);
+                        break;*/
+                }
             }
-            
-            spot = new Coord(i / 6, i % 6);
         }
         
-        for (int i = 0; i < rows * columns; ++i) {
-            System.out.println(locations[i].getCoord().getX()+ " " + locations[i].getCoord().getY());
+        
+        
+        for (int i = 0; i < rows; ++i) {
+            for (int j = 0; j < columns; ++j) {
+                System.out.print("<");
+                locations[i][j].printCoord();
+                System.out.print(">\n");
+            }
         }
     }
 }

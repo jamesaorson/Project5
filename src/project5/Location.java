@@ -5,11 +5,12 @@ package project5;
   *
   * @author James Osborne
   * @version 1.0 
-  * File: <filename>
-  * Created:  <current date>
+  * File: Location.java
+  * Created:  25 Oct 2016
   * ©Copyright James Osborne. All rights reserved.
   * Summary of Modifications:
-  *     XX month XXXX – JAO – 
+  *     25 Oct 2016 – JAO – Created constructors, printCoord(), accessors, and
+  *     mutators.
   * 
   * Description: 
   */
@@ -31,6 +32,10 @@ public class Location {
     public Location(Object square, int x, int y) {
         type = square;
         coord = new Coord(x, y);
+    }
+    
+    public void printCoord() {
+        System.out.print(coord.getX() + " " + coord.getY());
     }
     
     public Object getType() {

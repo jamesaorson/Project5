@@ -5,11 +5,12 @@ package project5;
   *
   * @author James Osborne
   * @version 1.0 
-  * File: <filename>
-  * Created:  <current date>
+  * File: MazeSquare.java
+  * Created:  25 Oct 2016
   * ©Copyright James Osborne. All rights reserved.
   * Summary of Modifications:
-  *     XX month XXXX – JAO – 
+  *     25 Oct 2016 – JAO – Gave the enum a wall, open, start, finish,
+  *     and undefined.
   * 
   * Description: 
   */
