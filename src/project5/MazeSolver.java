@@ -74,8 +74,6 @@ public class MazeSolver {
         //Sets file as long as an explicit string is provided.
         if (filename != null) {
             file = new File(filename);
-        } else {
-            file = null;
         }
     }
     
@@ -86,7 +84,7 @@ public class MazeSolver {
       * was specified in constructor.
       * @throws If file was not found in the working directory.
       */
-    public void solve(String filename) throws FileNotFoundException {        
+    public void solve(String filename) throws NoInputFileException {        
         parse(filename);
         
         //Tracks whether or not the endingLocation is found.
@@ -141,13 +139,26 @@ public class MazeSolver {
       * was specified in constructor.
       * @throws If file was not found by scanner in the working directory.
       */
-    private void parse(String filename) throws FileNotFoundException {
+    private void parse(String filename) throws NoInputFileException {
+        Scanner fileInput;
+        
         //Sets file if one was specified
         if (filename != null) {
             file = new File(filename);
         }
         
-        Scanner fileInput = new Scanner(file);
+        if (file == null) {
+            throw new NoInputFileException("No input file was specified");
+        }
+        
+        try {
+            fileInput = new Scanner(file);
+        }
+        
+        catch(FileNotFoundException e) {
+            throw new NoInputFileException("File was not in working directory"
+                                           + "or specified name is incorrect");
+        }
 
         rows = fileInput.nextInt();
         columns = fileInput.nextInt();

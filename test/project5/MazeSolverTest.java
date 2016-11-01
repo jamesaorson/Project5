@@ -24,6 +24,6 @@ public class MazeSolverTest {
     @Test
     public void testSolve() throws FileNotFoundException {
         MazeSolver solver = new MazeSolver();
-        solver.solve("test.in");
+        solver.solve(null);
     }
 }
