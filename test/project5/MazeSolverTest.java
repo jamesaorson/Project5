@@ -6,16 +6,12 @@
 package project5;
 
 import java.io.FileNotFoundException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
- *
- * @author Owner
+ * @author James Osborne
+ * File: MazeSolverTest.java
+ * Created:  25 Oct 2016
  */
 public class MazeSolverTest {
     
@@ -26,9 +22,8 @@ public class MazeSolverTest {
      * Test of solve method, of class MazeSolver.
      */
     @Test
-    public void testSolve() throws Exception {
+    public void testSolve() throws FileNotFoundException {
         MazeSolver solver = new MazeSolver();
         solver.solve("test.in");
     }
-    
 }
